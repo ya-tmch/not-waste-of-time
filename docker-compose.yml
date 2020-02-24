@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  node:
+    build:
+      context: ./docker/node/
+      dockerfile: ./Dockerfile
+    restart: 'no'
+    ports:
+      - 3000:3000
+    volumes:
+      - ./app:/app:delegated
+      - ./run.sh:/run.sh
+    command: ["bash", "/run.sh"]
